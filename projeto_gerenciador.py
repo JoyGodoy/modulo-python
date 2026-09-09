@@ -13,6 +13,8 @@ def ver_tarefas(tarefas):
         print(f"{indice}. [{status}] {nome_tarefa}")
     return    
 
+def teste_branch
+
 def atualizar_nome_tarefa(tarefas, indice_tarefa, novo_nome_tarefa):
     indice_tarefa_ajustado = int(indice_tarefa) - 1
     if indice_tarefa_ajustado >= 0 and indice_tarefa_ajustado < len(tarefas):

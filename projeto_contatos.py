@@ -1,14 +1,15 @@
-import os 
+import subprocess
+import os
 
 def adicionar_contato (contatos, nome_contato, email_contato, telefone_contato):
     contato = {"contato": nome_contato, "email": email_contato, "telefone": telefone_contato, "favorito": False}
     contatos.append(contato)
-    os.system('cls' if os.name == 'nt' else 'clear')
+    subprocess.run(['cls' if os.name == 'nt' else 'clear'], shell=True)
     print(f"O contato {nome_contato} foi salvo!")
     return
 
 def visualizar_contatos (contatos):
-    os.system('cls' if os.name == 'nt' else 'clear')
+    subprocess.run(['cls' if os.name == 'nt' else 'clear'], shell=True)
     print("\n Sua lista de contatos:")
     for indice, contato in enumerate(contatos, start=1):
         status = "☆ " if contato ["favorito"] else ""
@@ -25,20 +26,18 @@ def atualizar_contatos (contatos, indice_contato, escolha_novo):
     if escolha_novo == "1":
         novo_nome = input ("Digite o novo nome do contato: ")
         contato_indice ["contato"] = novo_nome
-        os.system('cls' if os.name == 'nt' else 'clear')
+        subprocess.run(['cls' if os.name == 'nt' else 'clear'], shell=True)
         print(f"Nome do contato atualizado para {novo_nome}")
     elif escolha_novo == "2":
         novo_email = input ("Digite o novo email do contato: ")
         contato_indice ["email"] = novo_email
-        os.system('cls' if os.name == 'nt' else 'clear')
+        subprocess.run(['cls' if os.name == 'nt' else 'clear'], shell=True)
         print(f"Email do contato atualizado para {novo_email}")
     elif escolha_novo == "3":
         novo_telefone = input ("Digite o novo telefone do contato: ")
         contato_indice ["telefone"] = novo_telefone
-        os.system('cls' if os.name == 'nt' else 'clear')
+        subprocess.run(['cls' if os.name == 'nt' else 'clear'])
         print(f"Telefone do contato atualizado para {novo_telefone}")
-
-    print (contatos)
     return
 
 def favoritar_desfavoritar (contatos, indice_contato):
@@ -67,14 +66,14 @@ def deletar_contato (contatos, indice_contato):
     indice_contato_ajustado = int (indice_contato) - 1
 
     if indice_contato_ajustado <0 and indice_contato_ajustado > len(contatos):
-        os.system('cls' if os.name == 'nt' else 'clear')
+        subprocess.run(['cls' if os.name == 'nt' else 'clear'], shell=True)
         print("Índice de contato inválido.")
         return
     
     else:
         del contatos[indice_contato_ajustado]
 
-        os.system('cls' if os.name == 'nt' else 'clear')
+        subprocess.run(['cls' if os.name == 'nt' else 'clear'], shell=True)
         print ("Contato deletado com sucesso!")
 
 contatos = []
@@ -112,7 +111,6 @@ while True:
             atualizar_contatos(contatos, indice_contato, escolha_novo)
         
     elif escolha == "4":
-        #Favoritar contato/desfavoritar um contato
         visualizar_contatos(contatos)
         indice_contato = input("Qual contato deseja favoritar/desfavoritar: ")
         favoritar_desfavoritar(contatos, indice_contato)
